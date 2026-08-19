@@ -1,0 +1,17 @@
+# Arquivo json
+usuarios.json
+*.json
+
+# Ambiente virtual Python
+venv/
+.venv/
+env/
+
+# Arquivos de cache do Python e Streamlit
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+
+# Configurações do ambiente de desenvolvimento
+.vscode/
+.DS_Store
