@@ -13,16 +13,11 @@ st.set_page_config(
 
 # 2. CARREGAMENTO DINÂMICO DE USUÁRIOS (JSON)
 def carregar_usuarios():
-    caminho_json = "usuarios.json"
-    if os.path.exists(caminho_json):
-        try:
-            with open(caminho_json, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception as e:
-            st.error(f"Erro ao carregar banco de usuários: {e}")
-            return {}
-    else:
-        # Retorna dicionário vazio para não expor credenciais no código público
+    try:
+        # Puxa o dicionario de usuarios cadastrado no painel do Streamlit
+        return dict(st.secrets["credentials"])
+    except Exception:
+        # Retorna vazio caso os Secrets ainda nao tenham sido configurados
         return {}
 
 USUARIOS_CADASTRADOS = carregar_usuarios()
